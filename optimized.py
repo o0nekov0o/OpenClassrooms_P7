@@ -7,10 +7,11 @@ actions_triees = sorted(liste_actions, key=lambda x: x[2])
 actions_selectionnees = []
 gain_total = 0
 cout_total = 0
+plafond = 500
 
 while actions_triees:
     action = actions_triees.pop()
-    if action[1] + cout_total <= 500:
+    if action[1] + cout_total <= plafond:
         actions_selectionnees.append(action)
         gain_total += action[2]
         cout_total += action[1]
