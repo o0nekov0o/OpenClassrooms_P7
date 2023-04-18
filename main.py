@@ -10,7 +10,7 @@ cout_total = 0
 plafond = 500
 
 
-def premiere_methode(plafond, liste_actions, cout_total, benefice_total):
+def methode_glouton(plafond, liste_actions, cout_total, benefice_total):
     actions_triees = sorted(liste_actions, key=lambda x: x[2])
     actions_selectionnees = []
     while actions_triees:
@@ -56,6 +56,6 @@ def force_brute_v2(plafond, liste_actions):
     return matrice[-1][-1], elements_selection
 
 
-print('Algo debut', premiere_methode(plafond, liste_actions, cout_total, benefice_total))
+print('Algo glouton', methode_glouton(plafond, liste_actions, cout_total, benefice_total))
 print('Algo force', force_brute(plafond, liste_actions, actions_selectionnees))
 print('Algo dynamique', force_brute_v2(plafond, liste_actions))
