@@ -10,7 +10,7 @@ cout_total = 0
 plafond = 500
 
 
-def premiere_methode(plafond, liste_actions, cout_total, benefice_total):
+def methode_glouton(plafond, liste_actions, cout_total, benefice_total):
     actions_triees = sorted(liste_actions, key=lambda x: x[2])
     actions_selectionnees = []
     while actions_triees:
@@ -22,4 +22,4 @@ def premiere_methode(plafond, liste_actions, cout_total, benefice_total):
     return sum([i[2] for i in actions_selectionnees]), actions_selectionnees
 
 
-print('Algo debut', premiere_methode(plafond, liste_actions, cout_total, benefice_total))
+print('Algo glouton', methode_glouton(plafond, liste_actions, cout_total, benefice_total))
