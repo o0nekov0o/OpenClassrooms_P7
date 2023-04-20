@@ -10,15 +10,20 @@ plafond = 500
 
 
 def force_brute(plafond, liste_actions, actions_selectionnees):
-    if liste_actions:
+    if liste_actions:  # s'il reste des éléments à traiter, appel récursif.
+        # ignorer élément courant, appel fonction sans 1èr élément, sans rien ajouter.
         val1, lstVal1 = force_brute(plafond, liste_actions[1:], actions_selectionnees)
-        val = liste_actions[0]
-        if val[1] <= plafond:
+        val = liste_actions[0]  # selectionner 1er élément.
+        if val[1] <= plafond:  # si on l'ajoute, on respecte les limitations.
+            # nouvel appel récursif, on réduit le plafond du prix de l'élément ajouté,
+            # renvoi liste d'éléments sans 1er, puis on sélectionne 1er élément ajouté.
             val2, lstVal2 = force_brute(plafond - val[1], liste_actions[1:], actions_selectionnees + [val])
-            if val1 < val2:
-                return val2, lstVal2
-        return val1, lstVal1
-    else:
+            # on compare les 2 solutions, quelle est la plus rentable ?
+            if val1 < val2:  # mieux vaut-il ajouter l'élément ou pas ?
+                return val2, lstVal2  # on ramène la meilleure solution révursivement.
+        return val1, lstVal1  # on ramène la meilleure solution révursivement.
+    # si plus d'éléments à traiter, on renvoie la liste des éléments,
+    else:  # avec la meilleure solution, affichage bénéfice et actions choisies.
         return sum([i[2] for i in actions_selectionnees]), actions_selectionnees
 
 
