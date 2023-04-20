@@ -23,15 +23,20 @@ def methode_glouton(plafond, liste_actions, cout_total, benefice_total):
 
 
 def force_brute(plafond, liste_actions, actions_selectionnees):
-    if liste_actions:
+    if liste_actions:  # s'il reste des éléments à traiter, appel récursif.
+        # ignorer élément courant, appel fonction sans 1èr élément, sans rien ajouter.
         val1, lstVal1 = force_brute(plafond, liste_actions[1:], actions_selectionnees)
-        val = liste_actions[0]
-        if val[1] <= plafond:
+        val = liste_actions[0]  # selectionner 1er élément.
+        if val[1] <= plafond:  # si on l'ajoute, on respecte les limitations.
+            # nouvel appel récursif, on réduit le plafond du prix de l'élément ajouté,
+            # renvoi liste d'éléments sans 1er, puis on sélectionne 1er élément ajouté.
             val2, lstVal2 = force_brute(plafond - val[1], liste_actions[1:], actions_selectionnees + [val])
-            if val1 < val2:
-                return val2, lstVal2
-        return val1, lstVal1
-    else:
+            # on compare les 2 solutions, quelle est la plus rentable ?
+            if val1 < val2:  # mieux vaut-il ajouter l'élément ou pas ?
+                return val2, lstVal2  # on ramène la meilleure solution révursivement.
+        return val1, lstVal1  # on ramène la meilleure solution révursivement.
+    # si plus d'éléments à traiter, on renvoie la liste des éléments,
+    else:  # avec la meilleure solution, affichage bénéfice et actions choisies.
         return sum([i[2] for i in actions_selectionnees]), actions_selectionnees
 
 
@@ -39,17 +44,18 @@ def force_brute_v2(plafond, liste_actions):
     matrice = [[0 for x in range(plafond + 1)] for x in range(len(liste_actions) + 1)]
     for i in range(1, len(liste_actions) + 1):
         for w in range(1, plafond + 1):
-            if liste_actions[i-1][1] <= w:
-                matrice[i][w] = max(liste_actions[i-1][2] + matrice[i-1][w-liste_actions[i-1][1]], matrice[i-1][w])
+            if liste_actions[i - 1][1] <= w:
+                matrice[i][w] = max(liste_actions[i - 1][2] + matrice[i - 1][w - liste_actions[i - 1][1]],
+                                    matrice[i - 1][w])
             else:
-                matrice[i][w] = matrice[i-1][w]
+                matrice[i][w] = matrice[i - 1][w]
     # Retrouver les éléments en fonction de la somme
     w = plafond
     n = len(liste_actions)
     elements_selection = []
     while w >= 0 and n >= 0:
-        e = liste_actions[n-1]
-        if matrice[n][w] == matrice[n-1][w-e[1]] + e[2]:
+        e = liste_actions[n - 1]
+        if matrice[n][w] == matrice[n - 1][w - e[1]] + e[2]:
             elements_selection.append(e)
             w -= e[1]
         n -= 1
