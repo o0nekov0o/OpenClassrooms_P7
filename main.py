@@ -11,14 +11,16 @@ plafond = 500
 
 
 def methode_glouton(plafond, liste_actions, cout_total, benefice_total):
-    actions_triees = sorted(liste_actions, key=lambda x: x[2])
-    actions_selectionnees = []
-    while actions_triees:
-        action = actions_triees.pop()
-        if action[1] + cout_total <= plafond:
-            actions_selectionnees.append(action)
-            benefice_total += action[2]
-            cout_total += action[1]
+    # tri des elements selon leur valeur, avec la fonction lambda, donc pour chaque valeur x, on associe la valeur 2.
+    actions_triees = sorted(liste_actions, key=lambda x: x[2])  # on associe donc le bénéfice dans ce cas.
+    actions_selectionnees = []  # éléments qui seront séléctionnés pour maximiser les bénéfices.
+    while actions_triees:  # tant qu'il reste des éléments à trier dans la liste.
+        action = actions_triees.pop()  # je prends le dernier élément de la liste, avec la plus grande valeur.
+        if action[1] + cout_total <= plafond:  # si cout dernier élément + cout de tous les élements <= limites.
+            actions_selectionnees.append(action)  # alors on ajoute aux éléments qu'on sélectionne.
+            benefice_total += action[2]  # on met à jour le benefice_total, en ajoutant le benefice de l'élement ajouté.
+            cout_total += action[1]  # on met à jour le cout_total, en ajoutant le cout de l'élement ajouté.
+    # on retourne la solution obtenue, avec bénéfice et éléments sélectionnés.
     return sum([i[2] for i in actions_selectionnees]), actions_selectionnees
 
 
@@ -36,7 +38,7 @@ def force_brute(plafond, liste_actions, actions_selectionnees):
                 return val2, lstVal2  # on ramène la meilleure solution révursivement.
         return val1, lstVal1  # on ramène la meilleure solution révursivement.
     # si plus d'éléments à traiter, on renvoie la liste des éléments,
-    else:  # avec la meilleure solution, affichage bénéfice et actions choisies.
+    else:  # avec la meilleure solution, affichage bénéfice et éléments choisis.
         return sum([i[2] for i in actions_selectionnees]), actions_selectionnees
 
 

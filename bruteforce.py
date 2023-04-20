@@ -23,7 +23,7 @@ def force_brute(plafond, liste_actions, actions_selectionnees):
                 return val2, lstVal2  # on ramène la meilleure solution révursivement.
         return val1, lstVal1  # on ramène la meilleure solution révursivement.
     # si plus d'éléments à traiter, on renvoie la liste des éléments,
-    else:  # avec la meilleure solution, affichage bénéfice et actions choisies.
+    else:  # avec la meilleure solution, affichage bénéfice et éléments choisis.
         return sum([i[2] for i in actions_selectionnees]), actions_selectionnees
 
 
