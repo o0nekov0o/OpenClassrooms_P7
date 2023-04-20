@@ -1,0 +1,22 @@
+variable liste_actions = [('action_1', 20, 5), ('action_2', 30, 10), ('action_3', 50, 15), ('action_4', 70, 20),
+                 ('action_5', 60, 17), ('action_6', 80, 25), ('action_7', 22, 7), ('action_8', 26, 11),
+                 ('action_9', 48, 13), ('action_10', 34, 27), ('action_11', 42, 17), ('action_12', 110, 9),
+                 ('action_13', 38, 23), ('action_14', 14, 1), ('action_15', 18, 3), ('action_16', 8, 8),
+                 ('action_17', 4, 12), ('action_18', 10, 14), ('action_29', 24, 21), ('action_20', 114, 18)]
+variable actions_selectionnees = []
+variable benefice_total = 0
+variable cout_total = 0
+variable plafond = 500
+
+
+fonction methode_glouton(parametre_1 : plafond, parametre_2, liste_actions, parametre_3 : cout_total, parametre_4 : actions_selectionnees) {
+    variable actions_triees = sorted(liste_actions, fonction_lambda(x[3eme_element] pour x dans liste_actions))
+    variable actions_selectionnees = []
+    tant_que action_triees != [] {
+        variable action = actions_triees.voler(dernier_element)
+        si action[2eme_element] + cout_total <= plafond {
+            variable actions_selectionneees.ajouter(action)
+            variable benefice_total = benefice_total + action[3eme_element]
+            variable cout_total = cout_total + action[2eme_element]
+        }
+    }retourner somme([i[3eme_element] pour i dans actions_selectionnees]), actions_selectionnees
