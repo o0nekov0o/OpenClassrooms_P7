@@ -19,7 +19,7 @@ def force_brute(plafond, liste_actions, actions_selectionnees):
             # renvoi liste d'éléments sans 1er, puis on sélectionne 1er élément ajouté.
             val2, lstVal2 = force_brute(plafond - val[1], liste_actions[1:], actions_selectionnees + [val])
             # on compare les 2 solutions, quelle est la plus rentable ?
-            if val1 < val2:  # mieux vaut-il ajouter l'élément ou pas ?
+            if val1 < val2:  # mieux vaut-il ajouter l'élément ou non ?
                 return val2, lstVal2  # on ramène la meilleure solution révursivement.
         return val1, lstVal1  # on ramène la meilleure solution révursivement.
     # si plus d'éléments à traiter, on renvoie la liste des éléments,
