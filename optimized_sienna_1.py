@@ -1001,6 +1001,13 @@ liste_actions = [
     ("Share - ISXU", 23.73, 15.06),
     ("Share - IUVO", 8.47, 13.86),
 ]
+def tri_donnees_sienna_1():
+    for i in range(1, len(liste_actions)):
+        if liste_actions[i][1] <= 0:
+            liste_actions.pop(i)
+            return tri_donnees_sienna_1()
+    print(f"Après le tri des données de Sienna, le nombre d'actions est passé de 1001 à {(len(liste_actions))}.")
+tri_donnees_sienna_1()
 actions_triees = sorted(liste_actions, key=lambda x: x[2])
 actions_selectionnees = []
 benefice_total = 0
@@ -1019,7 +1026,7 @@ def methode_glouton(plafond, liste_actions, cout_total, benefice_total):
             benefice_total += action[2]  # on met à jour le benefice_total, en ajoutant le benefice de l'élement ajouté.
             cout_total += action[1]  # on met à jour le cout_total, en ajoutant le cout de l'élement ajouté.
     # on retourne la solution obtenue, avec bénéfice et éléments sélectionnés.
-    return sum([i[2] for i in actions_selectionnees]), actions_selectionnees
+    return sum([(i[2]/100)*i[1] for i in actions_selectionnees]), actions_selectionnees
 
 
 print('Algo glouton', methode_glouton(plafond, liste_actions, cout_total, benefice_total))
