@@ -1,15 +1,15 @@
- actions_selectionnees ← []
- benefice_total ← 0
- cout_total ← 0
- plafond ← 500
+actions_selectionnees ← []
+benefice_total ← 0
+cout_total ← 0
+plafond ← 500
 
 fonction methode_glouton(plafond, liste_actions, cout_total, actions_selectionnees) :
-	actions_triees ← trier selon le coût liste_actions par ordre décroissant
-	actions_selectionnees ← []
-	tant que action_triees n'est pas vide :
-		action ← récupérer action_triees[derniere_action]
-		si action[cout] + cout_total <= plafond :
-			actions_selectionnees ← actions_selectionnees + action
-			benefice_total ← benefice_total + action[benefice]
-			cout_total ← cout_total + action[cout]
-	retourner(actions_selectionnees[benefice], afficher actions_selectionnees)
+    actions_triees ← trier selon le coût liste_actions par ordre décroissant
+    actions_selectionnees ← []
+    tant que action_triees n'est pas vide :
+        action ← récupérer action_triees[derniere_action]
+        si action[cout] + cout_total <= plafond :
+            actions_selectionnees ← actions_selectionnees + action
+            benefice_total ← benefice_total + action[benefice]
+            cout_total ← cout_total + action[cout]
+    retourner(actions_selectionnees[benefice], afficher actions_selectionnees)

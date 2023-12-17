@@ -1,16 +1,15 @@
- actions_selectionnees ← []
- benefice_total ← 0
- cout_total ← 0
- plafond ← 500
+actions_selectionnees ← []
+benefice_total ← 0
+cout_total ← 0
+plafond ← 500
 
 fonction force_brute(plafond, liste_actions, actions_selectionnees) :
-	si liste_actions n’est pas vide :
-		val1, lstVal1 ← force_brute(plafond, liste actions[excepte_1ere], actions_selectionnees)
-		val ← liste_actions[1ere]
-		si val[cout] <= plafond :
-			val2, lstVal2 ← force_brute(plafond, liste_actions[excepte_1ere], actions_selectionnees + [val])
-			si val < val2 :
-				retourner val2, lstVal2
-			retourner val1, lstVal1
-		sinon :
-			retourner(somme(actions_selectionnees[benefice]), afficher(actions_selectionnees))
+si liste_actions n’est pas vide :
+    val1, lstVal1 ← force_brute(plafond, liste actions[excepte_1ere], actions_selectionnees)
+    val ← liste_actions[1ere]
+    si val[cout] <= plafond :
+        val2, lstVal2 ← force_brute(plafond, liste_actions[excepte_1ere], actions_selectionnees + [val])
+        si val < val2 :
+            retourner val2, lstVal2 retourner val1, lstVal1
+        sinon :
+            retourner(somme(actions_selectionnees[benefice]), afficher(actions_selectionnees))
