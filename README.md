@@ -1,5 +1,5 @@
 
-# Résoudre des problèmes en utilisant des algorithmes en Python
+# Résoudre des problèmes en utilisant des algorithmes en Python (Projet No.7 OpenClassrooms)
 
 A partir d'un problème donné, il faut être capable de :
 
